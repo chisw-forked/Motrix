@@ -97,7 +97,7 @@
       },
       title () {
         const subnav = this.subnavs.find((item) => item.key === this.status)
-        return subnav.title
+        return subnav.title + ': ' + this.taskList.length
       }
     },
     watch: {

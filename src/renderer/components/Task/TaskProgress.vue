@@ -2,6 +2,7 @@
   <el-progress
     v-if="isActive"
     :percentage="percent"
+    :stroke-width="3"
     :show-text="false"
     status="success"
     :color="color">
@@ -9,6 +10,7 @@
   <el-progress
     v-else
     :percentage="percent"
+    :stroke-width="3"
     :show-text="false"
     :color="color">
   </el-progress>

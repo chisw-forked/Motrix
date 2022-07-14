@@ -5,12 +5,12 @@
     </div>
     <mo-task-item-actions mode="LIST" :task="task" />
     <div class="task-progress">
+      <mo-task-progress-info :task="task" />
       <mo-task-progress
         :completed="Number(task.completedLength)"
         :total="Number(task.totalLength)"
         :status="taskStatus"
       />
-      <mo-task-progress-info :task="task" />
     </div>
   </div>
 </template>
@@ -88,34 +88,30 @@
 <style lang="scss">
 .task-item {
   position: relative;
-  min-height: 78px;
-  padding: 16px 12px;
+  padding: 6px 0;
   background-color: $--task-item-background;
-  border: 1px solid $--task-item-border-color;
-  border-radius: 6px;
-  margin-bottom: 16px;
   transition: $--border-transition-base;
   &:hover {
-    border-color: $--task-item-hover-border-color;
+    background: #fafafa;
   }
   .task-item-actions {
     position: absolute;
-    top: 16px;
-    right: 12px;
+    top: 0;
+    right: 0;
   }
 }
 .selected .task-item {
-  border-color: $--task-item-hover-border-color;
+  background: #efefef;
+}
+.task-progress {
+  margin-top: 2px;
 }
 .task-name {
   color: #505753;
-  margin-bottom: 1.5rem;
-  margin-right: 200px;
   word-break: break-all;
-  min-height: 26px;
+  font-weight: bold;
   &> span {
-    font-size: 14px;
-    line-height: 26px;
+    font-size: 12px;
     overflow : hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

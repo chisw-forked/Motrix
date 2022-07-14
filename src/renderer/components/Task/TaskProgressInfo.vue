@@ -106,7 +106,6 @@
   line-height: 0.875rem;
   min-height: 0.875rem;
   color: #9B9B9B;
-  margin-top: 0.5rem;
   i {
     font-style: normal;
   }

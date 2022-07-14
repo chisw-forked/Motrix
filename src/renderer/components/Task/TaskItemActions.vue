@@ -2,31 +2,31 @@
   <ul :key="task.gid" class="task-item-actions" v-on:dblclick.stop="() => null">
     <li v-for="action in taskActions" :key="action" class="task-item-action">
       <i v-if="action ==='PAUSE'" @click.stop="onPauseClick">
-        <mo-icon name="task-pause-line" width="14" height="14" />
+        <mo-icon name="task-pause-line" width="12" height="12" />
       </i>
       <i v-if="action ==='STOP'" @click.stop="onStopClick">
-        <mo-icon name="task-stop-line" width="14" height="14" />
+        <mo-icon name="task-stop-line" width="12" height="12" />
       </i>
       <i v-if="action === 'RESUME'" @click.stop="onResumeClick">
-        <mo-icon name="task-start-line" width="14" height="14" />
+        <mo-icon name="task-start-line" width="12" height="12" />
       </i>
       <i v-if="action === 'RESTART'" @click.stop="onRestartClick">
-        <mo-icon name="task-restart" width="14" height="14" />
+        <mo-icon name="task-restart" width="12" height="12" />
       </i>
       <i v-if="action === 'DELETE'" @click.stop="onDeleteClick">
-        <mo-icon name="delete" width="14" height="14" />
+        <mo-icon name="delete" width="12" height="12" />
       </i>
       <i v-if="action === 'TRASH'" @click.stop="onTrashClick">
-        <mo-icon name="trash" width="14" height="14" />
+        <mo-icon name="trash" width="12" height="12" />
       </i>
       <i v-if="action ==='FOLDER'" @click.stop="onFolderClick">
-        <mo-icon name="folder" width="14" height="14" />
+        <mo-icon name="folder" width="12" height="12" />
       </i>
       <i v-if="action ==='LINK'" @click.stop="onLinkClick">
-        <mo-icon name="link" width="14" height="14" />
+        <mo-icon name="link" width="12" height="12" />
       </i>
       <i v-if="action ==='INFO'" @click.stop="onInfoClick">
-        <mo-icon name="info-circle" width="14" height="14" />
+        <mo-icon name="info-circle" width="12" height="12" />
       </i>
     </li>
   </ul>
@@ -190,27 +190,14 @@
 
 <style lang="scss">
 .task-item-actions {
-  // width: 28px;
-  height: 24px;
-  padding: 0 10px;
   margin: 0;
   overflow: hidden;
   user-select: none;
   cursor: default;
   text-align: right;
-  direction: rtl;
-  border: 1px solid $--task-item-action-border-color;
   color: $--task-item-action-color;
-  background-color: $--task-item-action-background;
-  border-radius: 14px;
   transition: $--all-transition;
-  &:hover {
-    border-color: $--task-item-action-hover-border-color;
-    color: $--task-item-action-hover-color;
-    background-color: $--task-item-action-hover-background;
-    width: auto;
-  }
-  &> .task-item-action {
+  & > .task-item-action {
     display: inline-block;
     padding: 5px;
     margin: 0 4px;
