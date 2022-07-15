@@ -202,7 +202,7 @@
               v-model="form.maxConcurrentDownloads"
               controls-position="right"
               :min="1"
-              :max="10"
+              :max="100"
               :label="$t('preferences.max-concurrent-downloads')">
             </el-input-number>
           </el-col>

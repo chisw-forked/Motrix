@@ -1,24 +1,16 @@
 <template>
-  <el-row class="task-progress-info">
-    <el-col
-      class="task-progress-info-left"
-      :xs="12"
-      :sm="7"
-      :md="6"
-      :lg="6"
-    >
-      <div v-if="task.completedLength > 0 || task.totalLength > 0">
+  <div class="task-progress-info">
+    <div class="task-progress-info-left">
+      <b>{{taskFullName}}</b>
+      &nbsp;
+      <span v-if="task.completedLength > 0 || task.totalLength > 0">
         <span>{{ task.completedLength | bytesToSize(2) }}</span>
         <span v-if="task.totalLength > 0"> / {{ task.totalLength | bytesToSize(2) }}</span>
-      </div>
-    </el-col>
-    <el-col
-      class="task-progress-info-right"
+      </span>
+    </div>
+    <div
       v-if="isActive"
-      :xs="12"
-      :sm="17"
-      :md="18"
-      :lg="18"
+      class="task-progress-info-right"
     >
       <div class="task-speed-info">
         <div class="task-speed-text" v-if="isBT">
@@ -33,12 +25,12 @@
           <span>
             {{
               remaining | timeFormat({
-                prefix: $t('task.remaining-prefix'),
+                prefix: '',  // $t('task.remaining-prefix'),
                 i18n: {
-                  'gt1d': $t('app.gt1d'),
-                  'hour': $t('app.hour'),
-                  'minute': $t('app.minute'),
-                  'second': $t('app.second')
+                  'gt1d': 'd',  // $t('app.gt1d'),
+                  'hour': 'h',  // $t('app.hour'),
+                  'minute': 'min',  // $t('app.minute'),
+                  'second': 's',  // $t('app.second')
                 }
               })
             }}
@@ -53,8 +45,8 @@
           <span>{{ task.connections }}</span>
         </div>
       </div>
-    </el-col>
-  </el-row>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -63,7 +55,8 @@
     checkTaskIsBT,
     checkTaskIsSeeder,
     timeFormat,
-    timeRemaining
+    timeRemaining,
+    getTaskName
   } from '@shared/utils'
   import { TASK_STATUS } from '@shared/constants'
   import '@/components/Icons/arrow-up'
@@ -79,6 +72,12 @@
       }
     },
     computed: {
+      taskFullName () {
+        return getTaskName(this.task, {
+          defaultName: this.$t('task.get-task-name'),
+          maxLen: -1
+        })
+      },
       isActive () {
         return this.task.status === TASK_STATUS.ACTIVE
       },
@@ -102,20 +101,22 @@
 
 <style lang="scss">
 .task-progress-info {
-  font-size: 0.75rem;
-  line-height: 0.875rem;
-  min-height: 0.875rem;
-  color: #9B9B9B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #afafaf;
   i {
     font-style: normal;
   }
 }
+.task-progress-info b {
+  color: black;
+}
 .task-progress-info-left {
-  min-height: 0.875rem;
   text-align: left;
 }
 .task-progress-info-right {
-  min-height: 0.875rem;
   text-align: right;
 }
 .task-speed-info {

@@ -69,7 +69,7 @@
 
 <style lang="scss">
 .task-list {
-  padding: 16px 16px 64px;
+  padding: 6px 16px 64px 16px;
   min-height: 100%;
   box-sizing: border-box;
 }

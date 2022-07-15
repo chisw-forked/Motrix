@@ -1,8 +1,8 @@
 <template>
   <div :key="task.gid" class="task-item" v-on:dblclick="onDbClick">
-    <div class="task-name" :title="taskFullName">
+    <!-- <div class="task-name" :title="taskFullName">
       <span>{{ taskFullName }}</span>
-    </div>
+    </div> -->
     <mo-task-item-actions mode="LIST" :task="task" />
     <div class="task-progress">
       <mo-task-progress-info :task="task" />
@@ -88,23 +88,28 @@
 <style lang="scss">
 .task-item {
   position: relative;
-  padding: 6px 0;
+  padding: 4px 0 0 0;
   background-color: $--task-item-background;
   transition: $--border-transition-base;
   &:hover {
     background: #fafafa;
+    .task-item-actions {
+      display: block;
+    }
+    .task-progress-info-right {
+      opacity: 0;
+    }
   }
   .task-item-actions {
     position: absolute;
+    z-index: 2;
     top: 0;
     right: 0;
+    display: none;
   }
 }
 .selected .task-item {
-  background: #efefef;
-}
-.task-progress {
-  margin-top: 2px;
+  background: #e0e7ff;
 }
 .task-name {
   color: #505753;
