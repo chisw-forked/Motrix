@@ -38,6 +38,14 @@
         downloadSpeed: state => state.stat.downloadSpeed,
         speed: state => state.stat.uploadSpeed + state.stat.downloadSpeed
       }),
+      ...mapState('task', {
+        downloadingTaskListLen: state => state.taskList
+          .filter(t => ['active', 'waiting'].includes(t.status))
+          .length,
+        stoppedTaskListLen: state => state.taskList
+          .filter(t => t.status === 'stopped')
+          .length
+      }),
       scale () {
         return 2
       },
@@ -84,6 +92,8 @@
           currentTheme: theme,
           uploadSpeed,
           downloadSpeed,
+          downloadingTaskListLen,
+          stoppedTaskListLen,
           scale,
           iconKey
         } = this
@@ -97,6 +107,8 @@
             icon,
             uploadSpeed,
             downloadSpeed,
+            downloadingTaskListLen,
+            stoppedTaskListLen,
             scale
           }
         })

@@ -27,6 +27,8 @@ export const draw = async ({
   icon,
   uploadSpeed,
   downloadSpeed,
+  downloadingTaskListLen,
+  stoppedTaskListLen,
   scale,
   resultType
 }) => {
@@ -63,11 +65,13 @@ export const draw = async ({
   ctx.textAlign = 'right'
   ctx.fillStyle = textColor
 
-  const uploadText = `${bytesToSize(uploadSpeed)}/s`
+  const downloadingCount = `00${downloadingTaskListLen}`.slice(-3)
+  const uploadText = `${bytesToSize(uploadSpeed)}/s  |  ${downloadingCount}`
   const uploadTextY = 0
   ctx.fillText(uploadText, width, uploadTextY, textWidth)
 
-  const downloadText = `${bytesToSize(downloadSpeed)}/s`
+  const stoppedCount = `00${stoppedTaskListLen}`.slice(-3)
+  const downloadText = `${bytesToSize(downloadSpeed)}/s  |  ${stoppedCount}`
   const downloadTextY = baseFontSize * scale + 0.5
   ctx.fillText(downloadText, width, downloadTextY, textWidth)
 
